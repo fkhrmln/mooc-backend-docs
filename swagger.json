@@ -1,0 +1,36 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Binar Car Rental",
+    "version": "1.0.0",
+    "description": "API Docs For Binar Car Rental"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:5000",
+      "description": "Development Server"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Authentication",
+      "description": "Everything about Authentication"
+    },
+    {
+      "name": "Course",
+      "description": "Everything about Course"
+    }
+  ],
+  "paths": {
+    
+  }
+}
