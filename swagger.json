@@ -179,7 +179,7 @@
                     "default": "string",
                     "type": "string"
                   },
-                  "phoneNumber": {
+                  "phone": {
                     "default": "string",
                     "type": "string"
                   },
@@ -188,7 +188,7 @@
                     "type": "string"
                   }
                 },
-                "required": ["name", "email", "phoneNumber", "password"]
+                "required": ["name", "email", "phone", "password"]
               }
             }
           }
@@ -218,10 +218,10 @@
                       "data": null
                     }
                   },
-                  "Phone Number Already Used": {
+                  "Phone Already Used": {
                     "value": {
                       "status": "FAIL",
-                      "message": "Phone Number Already Used",
+                      "message": "Phone Already Used",
                       "data": null
                     }
                   }
@@ -243,7 +243,7 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "emailOrPhoneNumber": {
+                  "emailOrPhone": {
                     "default": "string",
                     "type": "string"
                   },
@@ -252,7 +252,7 @@
                     "type": "string"
                   }
                 },
-                "required": ["emailOrPhoneNumber", "password"]
+                "required": ["emailOrPhone", "password"]
               }
             }
           }
@@ -277,10 +277,10 @@
             "content": {
               "application/json": {
                 "examples": {
-                  "Email or Phone Number not Registered": {
+                  "Email or Phone not Registered": {
                     "value": {
                       "status": "FAIL",
-                      "message": "Email or Phone Number not Registered",
+                      "message": "Email or Phone not Registered",
                       "data": null
                     }
                   },
