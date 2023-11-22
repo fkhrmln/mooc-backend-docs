@@ -20,7 +20,53 @@
       }
     },
     "schemas": {
-      "courses": {
+      "User": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "uuid",
+            "example": "550e8400-e29b-41d4-a716-446655440000"
+          },
+          "name": {
+            "type": "string",
+            "example": "Uzumaki Naruto"
+          },
+          "handphone": {
+            "type": "string",
+            "example": "091334567890"
+          },
+          "address": {
+            "type": "string",
+            "example": "JAPAN"
+          },
+          "email": {
+            "type": "string",
+            "example": "naruto@gmail.com"
+          },
+          "password": {
+            "type": "string",
+            "example": "$2b$10$e8dC5u/mxy5HExlcv5.RpOFUlbDwWy0GFgdvYKzzDH5PYzmu9xG2u"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "ADMIN",
+              "SUPERADMIN",
+              "MEMBER"
+            ],
+            "example": "MEMBER"
+          },
+          "createdAt": {
+            "type": "date-time",
+            "example": "2023-10-20 20:30:13.053+07"
+          },
+          "updatedAt": {
+            "type": "date-time",
+            "example": "2023-10-20 20:30:13.053+07"
+          }
+        }
+      },
+      "Course": {
         "type": "object",
         "properties": {
           "id": {
@@ -68,52 +114,6 @@
             "example": "550e8400-e29b-41d4-a716-446655440000"
           }
         }
-      },
-      "users": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "uuid",
-            "example": "550e8400-e29b-41d4-a716-446655440000"
-          },
-          "name": {
-            "type": "string",
-            "example": "Uzumaki Naruto"
-          },
-          "handphone": {
-            "type": "string",
-            "example": "091334567890"
-          },
-          "address": {
-            "type": "string",
-            "example": "JAPAN"
-          },
-          "email": {
-            "type": "string",
-            "example": "naruto@gmail.com"
-          },
-          "password": {
-            "type": "string",
-            "example": "$2b$10$e8dC5u/mxy5HExlcv5.RpOFUlbDwWy0GFgdvYKzzDH5PYzmu9xG2u"
-          },
-          "role": {
-            "type": "string",
-            "enum": [
-              "admin",
-              "superadmin",
-              "member"
-            ],
-            "example": "admin"
-          },
-          "createdAt": {
-            "type": "date-time",
-            "example": "2023-10-20 20:30:13.053+07"
-          },
-          "updatedAt": {
-            "type": "date-time",
-            "example": "2023-10-20 20:30:13.053+07"
-          }
-        }
       }
     }
   },
@@ -156,15 +156,6 @@
       "post": {
         "tags": ["Authentication"],
         "summary": "User registration",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/users"
-              }
-            }
-          }
-        },
         "responses": {
           "200": {
             "description": "User registered successfully"
