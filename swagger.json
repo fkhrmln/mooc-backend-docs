@@ -260,7 +260,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "view course list data"
+                        "description": "View all course data successfully"
                     }
                 }
                 },
@@ -311,7 +311,7 @@
                     },
                     "responses": {
                         "201": {
-                            "description": "courses data has been created"
+                            "description": "create course data has been successfully"
                         },
                         "400": {
                             "description": "invalid data structure from client"
@@ -378,7 +378,7 @@
                 },
                 "responses": {
                     "201": {
-                        "description": "courses data has been updated"
+                        "description": "update course data has been successfully"
                     },
                     "400": {
                         "description": "invalid data structure from client"
@@ -420,7 +420,7 @@
                     },
                     "responses": {
                         "201": {
-                            "description": "delete course by id"
+                            "description": "deleted course data has been successfully"
                         },
                         "401": {
                             "description": "unauthorized from user"
@@ -462,7 +462,49 @@
                 },
                 "responses": {
                     "200": {
-                        "description": "view course by id"
+                        "description": "View course data successfully"
+                    },
+                    "401": {
+                        "description": "unauthorized from user"
+                    },
+                    "403": {
+                        "description": "forbidden from this resource"
+                    },
+                    "404": {
+                        "description": "some error message"
+                    }
+                    
+                }
+            }
+    },
+    "/courses/filter" : {
+        "post": {
+            "tags": [
+                "Courses"
+            ],
+            "summary": "view data user by category id ",
+            "security": [
+                {
+                    "BearerAuth": []
+                }
+            ],
+            "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "categoryId": {
+                                        "type": "uuid"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "View course data successfully"
                     },
                     "401": {
                         "description": "unauthorized from user"
@@ -491,7 +533,7 @@
             ],
             "responses": {
                 "200": {
-                    "description": "view module list data"
+                    "description": "View all module data successfully"
                 }
             }
             },
@@ -530,7 +572,7 @@
                 },
                 "responses": {
                     "201": {
-                        "description": "modules data has been created"
+                        "description": "create module data has been successfully"
                     },
                     "400": {
                         "description": "invalid data structure from client"
@@ -585,7 +627,7 @@
             },
             "responses": {
                 "201": {
-                    "description": "modules data has been updated"
+                    "description": "update module data has been successfully"
                 },
                 "400": {
                     "description": "invalid data structure from client"
@@ -629,8 +671,8 @@
                     }
                 },
                 "responses": {
-                    "201": {
-                        "description": "view modules by id"
+                    "200": {
+                        "description": "View all module data successfully"
                     },
                     "401": {
                         "description": "unauthorized from user"
@@ -659,7 +701,7 @@
             ],
             "responses": {
                 "200": {
-                    "description": "view course tracking list data"
+                    "description": "View all module data successfully"
                 }
             }
             },
@@ -695,7 +737,7 @@
                 },
                 "responses": {
                     "201": {
-                        "description": "courseTrackings data has been created"
+                        "description": "create module data has been successfully"
                     },
                     "400": {
                         "description": "invalid data structure from client"
@@ -747,7 +789,7 @@
             },
             "responses": {
                 "201": {
-                    "description": "courseTrackings data has been updated"
+                    "description": "update module data has been successfully"
                 },
                 "400": {
                     "description": "invalid data structure from client"
@@ -820,7 +862,7 @@
             ],
             "responses": {
                 "200": {
-                    "description": "view course list data"
+                    "description": "View all module tracking data successfully"
                 }
             }
             },
@@ -856,7 +898,7 @@
                 },
                 "responses": {
                     "201": {
-                        "description": "moduleTrackings data has been created"
+                        "description": "create module tracking data has been successfully"
                     },
                     "400": {
                         "description": "invalid data structure from client"
@@ -908,7 +950,7 @@
             },
             "responses": {
                 "201": {
-                    "description": "moduleTrackings data has been updated"
+                    "description": "update module tracking data has been successfully"
                 },
                 "400": {
                     "description": "invalid data structure from client"
@@ -953,7 +995,7 @@
                 },
                 "responses": {
                     "201": {
-                        "description": "view course tracking by id"
+                        "description": "View all module tracking data successfully"
                     },
                     "401": {
                         "description": "unauthorized from user"
