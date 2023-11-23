@@ -164,9 +164,70 @@
       "post": {
         "tags": ["Authentication"],
         "summary": "User registration",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "default": "string",
+                    "type": "string"
+                  },
+                  "email": {
+                    "default": "string",
+                    "type": "string"
+                  },
+                  "phone": {
+                    "default": "string",
+                    "type": "string"
+                  },
+                  "password": {
+                    "default": "string",
+                    "type": "string"
+                  }
+                },
+                "required": ["name", "email", "phone", "password"]
+              }
+            }
+          }
+        },
         "responses": {
-          "200": {
-            "description": "User registered successfully"
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "OK",
+                  "message": "Register Successfully",
+                  "data": null
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Email Already Used": {
+                    "value": {
+                      "status": "FAIL",
+                      "message": "Email Already Used",
+                      "data": null
+                    }
+                  },
+                  "Phone Already Used": {
+                    "value": {
+                      "status": "FAIL",
+                      "message": "Phone Already Used",
+                      "data": null
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -175,9 +236,64 @@
       "post": {
         "tags": ["Authentication"],
         "summary": "User login",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "emailOrPhone": {
+                    "default": "string",
+                    "type": "string"
+                  },
+                  "password": {
+                    "default": "string",
+                    "type": "string"
+                  }
+                },
+                "required": ["emailOrPhone", "password"]
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
-            "description": "User logged in successfully"
+            "description": "",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "OK",
+                  "message": "Login Successfully",
+                  "data": {
+                    "accessToken": "JWT"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Email or Phone not Registered": {
+                    "value": {
+                      "status": "FAIL",
+                      "message": "Email or Phone not Registered",
+                      "data": null
+                    }
+                  },
+                  "Wrong Password": {
+                    "value": {
+                      "status": "FAIL",
+                      "message": "Wrong Password",
+                      "data": null
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
