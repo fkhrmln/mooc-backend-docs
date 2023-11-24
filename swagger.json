@@ -20,49 +20,508 @@
       }
     },
     "schemas": {
-      "User": {
+      "AccessTokenIsRequired": {
         "type": "object",
         "properties": {
-          "id": {
-            "type": "uuid",
-            "example": "550e8400-e29b-41d4-a716-446655440000"
-          },
-          "name": {
+          "status": {
             "type": "string",
-            "example": "Uzumaki Naruto"
+            "enum": ["OK", "FAIL"],
+            "example": "FAIL"
           },
-          "handphone": {
+          "message": {
             "type": "string",
-            "example": "091334567890"
+            "example": "Invalid Token"
           },
-          "address": {
+          "data": {
+            "example": null
+          }
+        }
+      },
+      "InvalidToken": {
+        "type": "object",
+        "properties": {
+          "status": {
             "type": "string",
-            "example": "JAPAN"
+            "enum": ["OK", "FAIL"],
+            "example": "FAIL"
           },
-          "email": {
+          "message": {
             "type": "string",
-            "example": "naruto@gmail.com"
+            "example": "Access Token is Required"
           },
-          "password": {
+          "data": {
+            "example": null
+          }
+        }
+      },
+      "Orders": {
+        "type": "object",
+        "properties": {
+          "status": {
             "type": "string",
-            "example": "$2b$10$e8dC5u/mxy5HExlcv5.RpOFUlbDwWy0GFgdvYKzzDH5PYzmu9xG2u"
+            "enum": ["OK", "FAIL"],
+            "example": "OK"
           },
-          "role": {
+          "message": {
             "type": "string",
-            "enum": [
-              "ADMIN",
-              "SUPERADMIN",
-              "MEMBER"
-            ],
-            "example": "MEMBER"
+            "example": null
           },
-          "createdAt": {
-            "type": "date-time",
-            "example": "2023-10-20 20:30:13.053+07"
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "format": "uuid",
+                  "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+                },
+                "status": {
+                  "type": "string",
+                  "enum": ["APPROVED", "WAITING"],
+                  "example": "WAITING"
+                },
+                "createdAt": {
+                  "type": "string",
+                  "format": "date-time",
+                  "example": "2023-01-01T00:00:00.000Z"
+                },
+                "updatedAt": {
+                  "type": "string",
+                  "format": "date-time",
+                  "example": "2023-01-01T00:00:00.000Z"
+                },
+                "userId": {
+                  "type": "string",
+                  "format": "uuid",
+                  "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+                },
+                "courseId": {
+                  "type": "string",
+                  "format": "uuid",
+                  "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+                },
+                "paymentId": {
+                  "type": "string",
+                  "format": "uuid",
+                  "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+                },
+                "user": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid",
+                      "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+                    },
+                    "name": {
+                      "type": "string",
+                      "example": "Windah Basudara"
+                    },
+                    "image": {
+                      "type": "string",
+                      "example": "image.png"
+                    },
+                    "phone": {
+                      "type": "string",
+                      "example": "08123456789"
+                    },
+                    "country": {
+                      "type": "string",
+                      "example": "Indonesia"
+                    },
+                    "city": {
+                      "type": "string",
+                      "example": "Bekasi"
+                    },
+                    "email": {
+                      "type": "string",
+                      "example": "example@gmail.com"
+                    },
+                    "password": {
+                      "type": "string",
+                      "example": "password123"
+                    },
+                    "role": {
+                      "type": "string",
+                      "enum": ["USER", "ADMIN"],
+                      "example": "USER"
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "example": "2023-01-01T00:00:00.000Z"
+                    },
+                    "updatedAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "example": "2023-01-01T00:00:00.000Z"
+                    }
+                  }
+                },
+                "course": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid",
+                      "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+                    },
+                    "title": {
+                      "type": "string",
+                      "example": "HTML"
+                    },
+                    "image": {
+                      "type": "string",
+                      "example": "image.png"
+                    },
+                    "subtitle": {
+                      "type": "string",
+                      "example": "English"
+                    },
+                    "description": {
+                      "type": "string",
+                      "example": "This is description"
+                    },
+                    "classCode": {
+                      "type": "string",
+                      "example": "XXX123"
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": ["FREE", "PREMIUM"],
+                      "example": "PREMIUM"
+                    },
+                    "authorBy": {
+                      "type": "string",
+                      "example": "Windah Basudara"
+                    },
+                    "rating": {
+                      "type": "number",
+                      "example": 0
+                    },
+                    "price": {
+                      "type": "number",
+                      "example": 0
+                    },
+                    "level": {
+                      "type": "string",
+                      "enum": ["BEGINNER", "INTERMEDIATE", "ADVANCED"],
+                      "example": "BEGINNER"
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "example": "2023-01-01T00:00:00.000Z"
+                    },
+                    "updatedAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "example": "2023-01-01T00:00:00.000Z"
+                    },
+                    "deletedAt": {
+                      "type": "null",
+                      "format": "date-time",
+                      "example": "2023-01-01T00:00:00.000Z"
+                    },
+                    "createdBy": {
+                      "type": "string",
+                      "format": "uuid",
+                      "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+                    },
+                    "updatedBy": {
+                      "type": "string",
+                      "format": "uuid",
+                      "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+                    },
+                    "deletedBy": {
+                      "type": "null",
+                      "format": "uuid",
+                      "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+                    },
+                    "categoryId": {
+                      "type": "string",
+                      "format": "uuid",
+                      "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+                    }
+                  }
+                },
+                "payment": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid",
+                      "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+                    },
+                    "cardNumber": {
+                      "type": "string",
+                      "example": "0123456789"
+                    },
+                    "cardName": {
+                      "type": "string",
+                      "example": "Windah Basudara"
+                    },
+                    "cvv": {
+                      "type": "integer",
+                      "example": 1234
+                    },
+                    "expiryDate": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "amount": {
+                      "type": "number",
+                      "example": 0
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "example": "2023-01-01T00:00:00.000Z"
+                    },
+                    "updatedAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "example": "2023-01-01T00:00:00.000Z"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "Order": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": ["OK", "FAIL"],
+            "example": "OK"
           },
-          "updatedAt": {
-            "type": "date-time",
-            "example": "2023-10-20 20:30:13.053+07"
+          "message": {
+            "type": "string",
+            "example": null
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "format": "uuid",
+                "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+              },
+              "status": {
+                "type": "string",
+                "enum": ["APPROVED", "WAITING"],
+                "example": "WAITING"
+              },
+              "createdAt": {
+                "type": "string",
+                "format": "date-time",
+                "example": "2023-01-01T00:00:00.000Z"
+              },
+              "updatedAt": {
+                "type": "string",
+                "format": "date-time",
+                "example": "2023-01-01T00:00:00.000Z"
+              },
+              "userId": {
+                "type": "string",
+                "format": "uuid",
+                "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+              },
+              "courseId": {
+                "type": "string",
+                "format": "uuid",
+                "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+              },
+              "paymentId": {
+                "type": "string",
+                "format": "uuid",
+                "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+              },
+              "user": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "format": "uuid",
+                    "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+                  },
+                  "name": {
+                    "type": "string",
+                    "example": "Windah Basudara"
+                  },
+                  "image": {
+                    "type": "string",
+                    "example": "image.png"
+                  },
+                  "phone": {
+                    "type": "string",
+                    "example": "08123456789"
+                  },
+                  "country": {
+                    "type": "string",
+                    "example": "Indonesia"
+                  },
+                  "city": {
+                    "type": "string",
+                    "example": "Bekasi"
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "example@gmail.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": "password123"
+                  },
+                  "role": {
+                    "type": "string",
+                    "enum": ["USER", "ADMIN"],
+                    "example": "USER"
+                  },
+                  "createdAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "example": "2023-01-01T00:00:00.000Z"
+                  },
+                  "updatedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "example": "2023-01-01T00:00:00.000Z"
+                  }
+                }
+              },
+              "course": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "format": "uuid",
+                    "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+                  },
+                  "title": {
+                    "type": "string",
+                    "example": "HTML"
+                  },
+                  "image": {
+                    "type": "string",
+                    "example": "image.png"
+                  },
+                  "subtitle": {
+                    "type": "string",
+                    "example": "English"
+                  },
+                  "description": {
+                    "type": "string",
+                    "example": "This is description"
+                  },
+                  "classCode": {
+                    "type": "string",
+                    "example": "XXX123"
+                  },
+                  "type": {
+                    "type": "string",
+                    "enum": ["FREE", "PREMIUM"],
+                    "example": "PREMIUM"
+                  },
+                  "authorBy": {
+                    "type": "string",
+                    "example": "Windah Basudara"
+                  },
+                  "rating": {
+                    "type": "number",
+                    "example": 0
+                  },
+                  "price": {
+                    "type": "number",
+                    "example": 0
+                  },
+                  "level": {
+                    "type": "string",
+                    "enum": ["BEGINNER", "INTERMEDIATE", "ADVANCED"],
+                    "example": "BEGINNER"
+                  },
+                  "createdAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "example": "2023-01-01T00:00:00.000Z"
+                  },
+                  "updatedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "example": "2023-01-01T00:00:00.000Z"
+                  },
+                  "deletedAt": {
+                    "type": "null",
+                    "format": "date-time",
+                    "example": "2023-01-01T00:00:00.000Z"
+                  },
+                  "createdBy": {
+                    "type": "string",
+                    "format": "uuid",
+                    "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+                  },
+                  "updatedBy": {
+                    "type": "string",
+                    "format": "uuid",
+                    "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+                  },
+                  "deletedBy": {
+                    "type": "null",
+                    "format": "uuid",
+                    "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+                  },
+                  "categoryId": {
+                    "type": "string",
+                    "format": "uuid",
+                    "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+                  }
+                }
+              },
+              "payment": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "format": "uuid",
+                    "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+                  },
+                  "cardNumber": {
+                    "type": "string",
+                    "example": "0123456789"
+                  },
+                  "cardName": {
+                    "type": "string",
+                    "example": "Windah Basudara"
+                  },
+                  "cvv": {
+                    "type": "integer",
+                    "example": 1234
+                  },
+                  "expiryDate": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "amount": {
+                    "type": "number",
+                    "example": 0
+                  },
+                  "createdAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "example": "2023-01-01T00:00:00.000Z"
+                  },
+                  "updatedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "example": "2023-01-01T00:00:00.000Z"
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -137,10 +596,6 @@
     {
       "name": "Categories",
       "description": "Endpoints for category management"
-    },
-    {
-      "name": "Payments",
-      "description": "Endpoints for payment management"
     },
     {
       "name": "Orders",
@@ -302,16 +757,53 @@
       "get": {
         "tags": ["Authentication"],
         "summary": "Get current user details",
-        "responses": {
-          "200": {
-            "description": "Current user details"
-          }
-        },
         "security": [
           {
             "BearerAuth": []
           }
-        ]
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "OK",
+                  "message": null,
+                  "data": {
+                    "id": "string",
+                    "name": "string",
+                    "email": "string",
+                    "image": "string",
+                    "country": "string",
+                    "city": "string",
+                    "role": "string"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccessTokenIsRequired"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvalidToken"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/users": {
@@ -341,24 +833,257 @@
         }
       }
     },
-    "/payments": {
-      "get": {
-        "tags": ["Payments"],
-        "summary": "Get list of payments",
-        "responses": {
-          "200": {
-            "description": "List of payments"
-          }
-        }
-      }
-    },
     "/orders": {
       "get": {
         "tags": ["Orders"],
         "summary": "Get list of orders",
         "responses": {
           "200": {
-            "description": "List of orders"
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Orders"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccessTokenIsRequired"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvalidToken"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Orders"],
+        "summary": "Create order",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userId": {
+                    "type": "string",
+                    "format": "uuid",
+                    "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+                  },
+                  "courseId": {
+                    "type": "string",
+                    "format": "uuid",
+                    "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+                  },
+                  "payment": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+                      },
+                      "cardNumber": {
+                        "type": "string",
+                        "example": "0123456789"
+                      },
+                      "cardName": {
+                        "type": "string",
+                        "example": "Windah Basudara"
+                      },
+                      "cvv": {
+                        "type": "integer",
+                        "example": 1234
+                      },
+                      "expiryDate": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "amount": {
+                        "type": "number",
+                        "example": 0
+                      }
+                    }
+                  }
+                },
+                "required": ["userId", "courseId", "payment"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "OK",
+                  "message": "Order Created Successfully",
+                  "data": null
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccessTokenIsRequired"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvalidToken"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "FAIL",
+                  "message": "Order has already been placed",
+                  "data": null
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/orders/id": {
+      "get": {
+        "tags": ["Orders"],
+        "summary": "Get order",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "orderId": {
+                    "type": "string",
+                    "format": "uuid",
+                    "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+                  }
+                },
+                "required": ["orderId"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Order"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccessTokenIsRequired"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvalidToken"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/orders/approve": {
+      "put": {
+        "tags": ["Orders"],
+        "summary": "Approve order",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "orderId": {
+                    "type": "string",
+                    "format": "uuid",
+                    "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+                  }
+                },
+                "required": ["orderId"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "OK",
+                  "message": "Order Approved Successfully",
+                  "data": null
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccessTokenIsRequired"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvalidToken"
+                }
+              }
+            }
           }
         }
       }
