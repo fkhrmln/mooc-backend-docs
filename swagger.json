@@ -837,6 +837,11 @@
       "get": {
         "tags": ["Orders"],
         "summary": "Get list of orders",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -873,6 +878,11 @@
       "post": {
         "tags": ["Orders"],
         "summary": "Create order",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -978,6 +988,11 @@
       "get": {
         "tags": ["Orders"],
         "summary": "Get order",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -985,13 +1000,13 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "orderId": {
+                  "userId": {
                     "type": "string",
                     "format": "uuid",
                     "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
                   }
                 },
-                "required": ["orderId"]
+                "required": ["userId"]
               }
             }
           }
@@ -1034,6 +1049,11 @@
       "put": {
         "tags": ["Orders"],
         "summary": "Approve order",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
