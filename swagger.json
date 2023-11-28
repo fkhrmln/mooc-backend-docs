@@ -1,401 +1,467 @@
 {
-  "openapi": "3.0.0",
-  "info": {
+    "openapi": "3.0.0",
+    "info": {
     "title": "Massive Open Online Course",
     "version": "1.0.0",
     "description": "API Docs For Massive Open Online Course"
-  },
-  "servers": [
-    {
-      "url": "http://localhost:5000",
-      "description": "Development Server"
-    }
-  ],
-  "components": {
+    },
+    "servers": [
+        {
+            "url": "http://localhost:5000",
+            "description": "Development Server"
+        },
+        {
+            "url": "https://binar-project-production.up.railway.app",
+            "description": "Production Server"
+        }
+    ],
+    "components": {
     "securitySchemes": {
-      "BearerAuth": {
+        "BearerAuth": {
         "type": "http",
         "scheme": "bearer",
         "bearerFormat": "JWT"
-      }
+        }
     },
     "schemas": {
-      "User": {
+        "User": {
         "type": "object",
         "properties": {
-          "id": {
+            "id": {
             "type": "uuid",
             "example": "550e8400-e29b-41d4-a716-446655440000"
-          },
-          "name": {
+            },
+            "name": {
             "type": "string",
             "example": "Uzumaki Naruto"
-          },
-          "handphone": {
+            },
+            "handphone": {
             "type": "string",
             "example": "091334567890"
-          },
-          "address": {
+            },
+            "address": {
             "type": "string",
             "example": "JAPAN"
-          },
-          "email": {
+            },
+            "email": {
             "type": "string",
             "example": "naruto@gmail.com"
-          },
-          "password": {
+            },
+            "password": {
             "type": "string",
             "example": "$2b$10$e8dC5u/mxy5HExlcv5.RpOFUlbDwWy0GFgdvYKzzDH5PYzmu9xG2u"
-          },
-          "role": {
+            },
+            "role": {
             "type": "string",
             "enum": [
-              "ADMIN",
-              "SUPERADMIN",
-              "MEMBER"
+                "ADMIN",
+                "SUPERADMIN",
+                "MEMBER"
             ],
             "example": "MEMBER"
-          },
-          "createdAt": {
+            },
+            "createdAt": {
             "type": "date-time",
             "example": "2023-10-20 20:30:13.053+07"
-          },
-          "updatedAt": {
+            },
+            "updatedAt": {
             "type": "date-time",
             "example": "2023-10-20 20:30:13.053+07"
-          }
+            }
         }
-      },
-      "Course": {
+        },
+        "Course": {
         "type": "object",
         "properties": {
-          "id": {
+            "id": {
             "type": "uuid",
             "example": "550e8400-e29b-41d4-a716-446655440000"
-          },
-          "name": {
+            },
+            "name": {
             "type": "string",
             "example": "Mobil Avanza"
-          },
-          "image": {
+            },
+            "image": {
             "type": "string",
             "example": "https://firebasestorage.googleapis.com/v0/b/binar-course-402108.appspot.com/o/course-seed-1697616543758.jpg?alt=media&token=fbd8f719-7387-4415-b852-9da385cb99ad"
-          },
-          "rentPerDay": {
+            },
+            "rentPerDay": {
             "type": "integer",
             "example": 100000
-          },
-          "size": {
+            },
+            "size": {
             "type": "string",
             "example": "Large"
-          },
-          "createdAt": {
+            },
+            "createdAt": {
             "type": "date-time",
             "example": "2023-10-20 20:30:13.053+07"
-          },
-          "updatedAt": {
+            },
+            "updatedAt": {
             "type": "date-time",
             "example": "2023-10-20 20:30:13.053+07"
-          },
-          "deletedAt": {
+            },
+            "deletedAt": {
             "type": "date-time",
             "example": "2023-10-20 20:30:13.053+07"
-          },
-          "createdBy": {
+            },
+            "createdBy": {
             "type": "uuid",
             "example": "550e8400-e29b-41d4-a716-446655440000"
-          },
-          "updatedBy": {
+            },
+            "updatedBy": {
             "type": "uuid",
             "example": "550e8400-e29b-41d4-a716-446655440000"
-          },
-          "deletedBy": {
+            },
+            "deletedBy": {
             "type": "uuid",
             "example": "550e8400-e29b-41d4-a716-446655440000"
-          }
+            }
         }
-      }
+        }
     }
-  },
-  "tags": [
+    },
+    "tags": [
     {
-      "name": "Authentication",
-      "description": "Endpoints for user authentication"
+        "name": "Authentication",
+        "description": "Endpoints for user authentication"
     },
     {
-      "name": "Users",
-      "description": "Endpoints for user management"
+        "name": "Users",
+        "description": "Endpoints for user management"
     },
     {
-      "name": "Courses",
-      "description": "Endpoints for course management"
+        "name": "Courses",
+        "description": "Endpoints for course management"
     },
     {
-      "name": "Modules",
-      "description": "Endpoints for module management"
+        "name": "Modules",
+        "description": "Endpoints for module management"
     },
     {
-      "name": "Categories",
-      "description": "Endpoints for category management"
+        "name": "Categories",
+        "description": "Endpoints for category management"
     },
     {
-      "name": "Payments",
-      "description": "Endpoints for payment management"
+        "name": "Payments",
+        "description": "Endpoints for payment management"
     },
     {
-      "name": "Orders",
-      "description": "Endpoints for order management"
+        "name": "Orders",
+        "description": "Endpoints for order management"
     },
     {
-      "name": "CourseTrackings",
-      "description": "Endpoints for course tracking management"
+        "name": "CourseTrackings",
+        "description": "Endpoints for course tracking management"
     },
     {
-      "name": "ModuleTrackings",
-      "description": "Endpoints for module tracking management"
+        "name": "ModuleTrackings",
+        "description": "Endpoints for module tracking management"
     },
     {
-      "name": "Notification",
-      "description": "Endpoints for notification management"
+        "name": "Notification",
+        "description": "Endpoints for notification management"
     }
-  ],
-  "paths": {
-    "/auth/register": {
-      "post": {
-        "tags": ["Authentication"],
-        "summary": "User registration",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "name": {
-                    "default": "string",
-                    "type": "string"
-                  },
-                  "email": {
-                    "default": "string",
-                    "type": "string"
-                  },
-                  "phone": {
-                    "default": "string",
-                    "type": "string"
-                  },
-                  "password": {
-                    "default": "string",
-                    "type": "string"
-                  }
-                },
-                "required": ["name", "email", "phone", "password"]
-              }
-            }
-          }
-        },
-        "responses": {
-          "201": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "example": {
-                  "status": "OK",
-                  "message": "Register Successfully",
-                  "data": null
-                }
-              }
-            }
-          },
-          "409": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "examples": {
-                  "Email Already Used": {
-                    "value": {
-                      "status": "FAIL",
-                      "message": "Email Already Used",
-                      "data": null
-                    }
-                  },
-                  "Phone Already Used": {
-                    "value": {
-                      "status": "FAIL",
-                      "message": "Phone Already Used",
-                      "data": null
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/auth/login": {
-      "post": {
-        "tags": ["Authentication"],
-        "summary": "User login",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "emailOrPhone": {
-                    "default": "string",
-                    "type": "string"
-                  },
-                  "password": {
-                    "default": "string",
-                    "type": "string"
-                  }
-                },
-                "required": ["emailOrPhone", "password"]
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "example": {
-                  "status": "OK",
-                  "message": "Login Successfully",
-                  "data": {
-                    "accessToken": "JWT"
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "examples": {
-                  "Email or Phone not Registered": {
-                    "value": {
-                      "status": "FAIL",
-                      "message": "Email or Phone not Registered",
-                      "data": null
-                    }
-                  },
-                  "Wrong Password": {
-                    "value": {
-                      "status": "FAIL",
-                      "message": "Wrong Password",
-                      "data": null
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/auth/current-user": {
-      "get": {
-        "tags": ["Authentication"],
-        "summary": "Get current user details",
-        "responses": {
-          "200": {
-            "description": "Current user details"
-          }
-        },
-        "security": [
-          {
-            "BearerAuth": []
-          }
-        ]
-      }
-    },
-    "/users": {
-      "get": {
-        "tags": ["Users"],
-        "summary": "Get list of users",
-        "responses": {
-          "200": {
-            "description": "List of users"
-          }
-        },
-        "security": [
-          {
-            "BearerAuth": []
-          }
-        ]
-      }
-    },
-    "/categories": {
-      "get": {
-        "tags": ["Categories"],
-        "summary": "Get list of categories",
-        "responses": {
-          "200": {
-            "description": "List of categories"
-          }
-        }
-      }
-    },
-    "/payments": {
-      "get": {
-        "tags": ["Payments"],
-        "summary": "Get list of payments",
-        "responses": {
-          "200": {
-            "description": "List of payments"
-          }
-        }
-      }
-    },
-    "/orders": {
-      "get": {
-        "tags": ["Orders"],
-        "summary": "Get list of orders",
-        "responses": {
-          "200": {
-            "description": "List of orders"
-          }
-        }
-      }
-    },
-    "/courses": {
-            "get": {
-                "tags": [
-                    "Courses"
-                ],
-                "summary": "view course list data",
-                "security": [
-                    {
-                        "BearerAuth": []
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "View all course data successfully"
-                    }
-                }
-                },
+    ],
+    "paths": {
+        "/auth/register": {
             "post": {
-                "tags": [
-                    "Courses"
-                ],
-                "summary": "create a new course ",
-                "security": [
-                    {
-                        "BearerAuth": []
-                    }      
-                ],
-                "requestBody": {
+            "tags": ["Authentication"],
+            "summary": "User registration",
+            "requestBody": {
+                "required": true,
+                "content": {
+                "application/json": {
+                    "schema": {
+                    "type": "object",
+                    "properties": {
+                        "name": {
+                        "default": "string",
+                        "type": "string"
+                        },
+                        "email": {
+                        "default": "string",
+                        "type": "string"
+                        },
+                        "phone": {
+                        "default": "string",
+                        "type": "string"
+                        },
+                        "password": {
+                        "default": "string",
+                        "type": "string"
+                        }
+                    },
+                    "required": ["name", "email", "phone", "password"]
+                    }
+                }
+                }
+            },
+            "responses": {
+                "201": {
+                "description": "",
+                "content": {
+                    "application/json": {
+                    "example": {
+                        "status": "OK",
+                        "message": "Register Successfully",
+                        "data": null
+                    }
+                    }
+                }
+                },
+                "409": {
+                "description": "",
+                "content": {
+                    "application/json": {
+                    "examples": {
+                        "Email Already Used": {
+                        "value": {
+                            "status": "FAIL",
+                            "message": "Email Already Used",
+                            "data": null
+                        }
+                        },
+                        "Phone Already Used": {
+                        "value": {
+                            "status": "FAIL",
+                            "message": "Phone Already Used",
+                            "data": null
+                        }
+                        }
+                    }
+                    }
+                }
+                }
+            }
+            }
+        },
+        "/auth/login": {
+            "post": {
+            "tags": ["Authentication"],
+            "summary": "User login",
+            "requestBody": {
+                "required": true,
+                "content": {
+                "application/json": {
+                    "schema": {
+                    "type": "object",
+                    "properties": {
+                        "emailOrPhone": {
+                        "default": "string",
+                        "type": "string"
+                        },
+                        "password": {
+                        "default": "string",
+                        "type": "string"
+                        }
+                    },
+                    "required": ["emailOrPhone", "password"]
+                    }
+                }
+                }
+            },
+            "responses": {
+                "200": {
+                "description": "",
+                "content": {
+                    "application/json": {
+                    "example": {
+                        "status": "OK",
+                        "message": "Login Successfully",
+                        "data": {
+                        "accessToken": "JWT"
+                        }
+                    }
+                    }
+                }
+                },
+                "401": {
+                "description": "",
+                "content": {
+                    "application/json": {
+                    "examples": {
+                        "Email or Phone not Registered": {
+                        "value": {
+                            "status": "FAIL",
+                            "message": "Email or Phone not Registered",
+                            "data": null
+                        }
+                        },
+                        "Wrong Password": {
+                        "value": {
+                            "status": "FAIL",
+                            "message": "Wrong Password",
+                            "data": null
+                        }
+                        }
+                    }
+                    }
+                }
+                }
+            }
+            }
+        },
+        "/auth/current-user": {
+            "get": {
+            "tags": ["Authentication"],
+            "summary": "Get current user details",
+            "responses": {
+                "200": {
+                "description": "Current user details"
+                }
+            },
+            "security": [
+                {
+                "BearerAuth": []
+                }
+            ]
+            }
+        },
+        "/users": {
+            "get": {
+            "tags": ["Users"],
+            "summary": "Get list of users",
+            "responses": {
+                "200": {
+                "description": "List of users"
+                }
+            },
+            "security": [
+                {
+                "BearerAuth": []
+                }
+            ]
+            }
+        },
+        "/categories": {
+            "get": {
+            "tags": ["Categories"],
+            "summary": "Get list of categories",
+            "responses": {
+                "200": {
+                "description": "List of categories"
+                }
+            }
+            }
+        },
+        "/payments": {
+            "get": {
+            "tags": ["Payments"],
+            "summary": "Get list of payments",
+            "responses": {
+                "200": {
+                "description": "List of payments"
+                }
+            }
+            }
+        },
+        "/orders": {
+            "get": {
+            "tags": ["Orders"],
+            "summary": "Get list of orders",
+            "responses": {
+                "200": {
+                "description": "List of orders"
+                }
+            }
+            }
+        },
+        "/courses": {
+                "get": {
+                    "tags": [
+                        "Courses"
+                    ],
+                    "summary": "view course list data",
+                    "responses": {
+                        "200": {
+                            "description": "View all course data successfully"
+                        }
+                    }
+                    },
+                "post": {
+                    "tags": [
+                        "Courses"
+                    ],
+                    "summary": "create a new course ",
+                    "security": [
+                        {
+                            "BearerAuth": []
+                        }      
+                    ],
+                    "requestBody": {
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "type": "object",
+                                        "properties": {
+                                            "title": {
+                                                "type": "string"
+                                            },
+                                            "subtitle": {
+                                                "type": "number"
+                                            },
+                                            "description": {
+                                                "type": "string"
+                                            },
+                                            "classCode": {
+                                                "type": "string"
+                                            },
+                                            "type": {
+                                                "type": "string"
+                                            },
+                                            "authorBy": {
+                                                "type": "string"
+                                            },
+                                            "price": {
+                                                "type": "number"
+                                            },
+                                            "level" : {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "responses": {
+                            "201": {
+                                "description": "create course data has been successfully"
+                            },
+                            "400": {
+                                "description": "invalid data structure from client"
+                            },
+                            "401": {
+                                "description": "unauthorized from user"
+                            },
+                            "403": {
+                                "description": "forbidden from this resource"
+                            },
+                            "404": {
+                                "description": "some error message"
+                            }
+                            
+                        }
+                    },
+                "put": {
+                    "tags": [
+                        "Courses"
+                    ],
+                    "summary": "update course data",
+                    "security": [
+                        {
+                            "BearerAuth": []
+                        }
+                    ],
+                    "requestBody": {
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "type": "object",
                                     "properties": {
+                                        "id": {
+                                            "type": "uuid"
+                                        },
                                         "title": {
                                             "type": "string"
                                         },
@@ -427,7 +493,191 @@
                     },
                     "responses": {
                         "201": {
-                            "description": "create course data has been successfully"
+                            "description": "update course data has been successfully"
+                        },
+                        "400": {
+                            "description": "invalid data structure from client"
+                        },
+                        "401": {
+                            "description": "unauthorized from user"
+                        },
+                        "403": {
+                            "description": "forbidden from this resource"
+                        },
+                        "404": {
+                            "description": "data not found"
+                        }
+                    }
+                },
+                "delete": {
+                    "tags": [
+                        "Courses"
+                    ],
+                    "summary": "delete data  course by id ",
+                    "security": [
+                        {
+                            "BearerAuth": []
+                        }
+                    ],
+                    "requestBody": {
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "uuid"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "responses": {
+                            "201": {
+                                "description": "deleted course data has been successfully"
+                            },
+                            "401": {
+                                "description": "unauthorized from user"
+                            },
+                            "403": {
+                                "description": "forbidden from this resource"
+                            },
+                            "404": {
+                                "description": "some error message"
+                            }
+                            
+                        }
+                    }
+        },
+        "/courses/search" : {
+            "post": {
+                "tags": [
+                    "Courses"
+                ],
+                "summary": "view data user by id ",
+                "requestBody": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "uuid"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "responses": {
+                        "200": {
+                            "description": "View course data successfully"
+                        },
+                        "401": {
+                            "description": "unauthorized from user"
+                        },
+                        "403": {
+                            "description": "forbidden from this resource"
+                        },
+                        "404": {
+                            "description": "some error message"
+                        }
+                        
+                    }
+                }
+        },
+        "/courses/filter" : {
+            "post": {
+                "tags": [
+                    "Courses"
+                ],
+                "summary": "view data user by category id ",
+                "requestBody": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "categoryId": {
+                                            "type": "uuid"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "responses": {
+                        "200": {
+                            "description": "View course data successfully"
+                        },
+                        "401": {
+                            "description": "unauthorized from user"
+                        },
+                        "403": {
+                            "description": "forbidden from this resource"
+                        },
+                        "404": {
+                            "description": "some error message"
+                        }
+                        
+                    }
+                }
+        },
+        
+        "/modules": {
+            "get": {
+                "tags": [
+                    "Modules"
+                ],
+                "summary": "view module list data",
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "View all module data successfully"
+                    }
+                }
+                },
+            "post": {
+                "tags": [
+                    "Modules"
+                ],
+                "summary": "create a new module ",
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "requestBody": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "title": {
+                                            "type": "string"
+                                        },
+                                        "video": {
+                                            "type": "string"
+                                        },
+                                        "time": {
+                                            "type": "number"
+                                        },
+                                        "courseId": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "responses": {
+                        "201": {
+                            "description": "create module data has been successfully"
                         },
                         "400": {
                             "description": "invalid data structure from client"
@@ -446,7 +696,7 @@
                 },
             "put": {
                 "tags": [
-                    "Courses"
+                    "Modules"
                 ],
                 "summary": "update course data",
                 "security": [
@@ -466,26 +716,14 @@
                                     "title": {
                                         "type": "string"
                                     },
-                                    "subtitle": {
+                                    "video": {
+                                        "type": "string"
+                                    },
+                                    "time": {
                                         "type": "number"
                                     },
-                                    "description": {
-                                        "type": "string"
-                                    },
-                                    "classCode": {
-                                        "type": "string"
-                                    },
-                                    "type": {
-                                        "type": "string"
-                                    },
-                                    "authorBy": {
-                                        "type": "string"
-                                    },
-                                    "price": {
-                                        "type": "number"
-                                    },
-                                    "level" : {
-                                        "type": "string"
+                                    "courseId": {
+                                        "type": "uuid"
                                     }
                                 }
                             }
@@ -494,7 +732,7 @@
                 },
                 "responses": {
                     "201": {
-                        "description": "update course data has been successfully"
+                        "description": "update module data has been successfully"
                     },
                     "400": {
                         "description": "invalid data structure from client"
@@ -509,12 +747,176 @@
                         "description": "data not found"
                     }
                 }
-            },
-            "delete": {
+            }
+        
+        },
+        "/modules/search" : {
+            "post": {
                 "tags": [
-                    "Courses"
+                    "Modules"
                 ],
-                "summary": "delete data  course by id ",
+                "summary": "view data modules by id ",
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "requestBody": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "uuid"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "responses": {
+                        "200": {
+                            "description": "View all module data successfully"
+                        },
+                        "401": {
+                            "description": "unauthorized from user"
+                        },
+                        "403": {
+                            "description": "forbidden from this resource"
+                        },
+                        "404": {
+                            "description": "some error message"
+                        }
+                        
+                    }
+                }
+        },
+
+        "/courseTrackings": {
+            "get": {
+                "tags": [
+                    "CourseTrackings"
+                ],
+                "summary": "view course tracking list data",
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "View all module data successfully"
+                    }
+                }
+                },
+            "post": {
+                "tags": [
+                    "CourseTrackings"
+                ],
+                "summary": "add new data course tracking  ",
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "requestBody": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": {
+                                            "type": "string"
+                                        },
+                                        "userId": {
+                                            "type": "uuid"
+                                        },
+                                        "courseId": {
+                                            "type": "uuid"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "responses": {
+                        "201": {
+                            "description": "create module data has been successfully"
+                        },
+                        "400": {
+                            "description": "invalid data structure from client"
+                        },
+                        "401": {
+                            "description": "unauthorized from user"
+                        },
+                        "403": {
+                            "description": "forbidden from this resource"
+                        },
+                        "404": {
+                            "description": "some error message"
+                        }
+                        
+                    }
+                },
+            "put": {
+                "tags": [
+                    "CourseTrackings"
+                ],
+                "summary": "update course tracking data",
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "uuid"
+                                    },
+                                    "status": {
+                                        "type": "string"
+                                    },
+                                    "userId": {
+                                        "type": "uuid"
+                                    },
+                                    "courseId": {
+                                        "type": "uuid"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "update module data has been successfully"
+                    },
+                    "400": {
+                        "description": "invalid data structure from client"
+                    },
+                    "401": {
+                        "description": "unauthorized from user"
+                    },
+                    "403": {
+                        "description": "forbidden from this resource"
+                    },
+                    "404": {
+                        "description": "data not found"
+                    }
+                }
+            }
+        },
+        "/courseTrackings/search" : {
+            "post": {
+                "tags": [
+                    "CourseTrackings"
+                ],
+                "summary": "view course tracking data by id ",
                 "security": [
                     {
                         "BearerAuth": []
@@ -536,7 +938,7 @@
                     },
                     "responses": {
                         "201": {
-                            "description": "deleted course data has been successfully"
+                            "description": "view course tracking by id"
                         },
                         "401": {
                             "description": "unauthorized from user"
@@ -550,568 +952,113 @@
                         
                     }
                 }
-      },
-    "/courses/search" : {
-        "post": {
-            "tags": [
-                "Courses"
-            ],
-            "summary": "view data user by id ",
-            "security": [
-                {
-                    "BearerAuth": []
-                }
-            ],
-            "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "id": {
-                                        "type": "uuid"
-                                    }
-                                }
-                            }
-                        }
+        },
+
+        "/moduleTrackings": {
+            "get": {
+                "tags": [
+                    "ModuleTrackings"
+                ],
+                "summary": "view course list data",
+                "security": [
+                    {
+                        "BearerAuth": []
                     }
-                },
+                ],
                 "responses": {
                     "200": {
-                        "description": "View course data successfully"
-                    },
-                    "401": {
-                        "description": "unauthorized from user"
-                    },
-                    "403": {
-                        "description": "forbidden from this resource"
-                    },
-                    "404": {
-                        "description": "some error message"
-                    }
-                    
-                }
-            }
-    },
-    "/courses/filter" : {
-        "post": {
-            "tags": [
-                "Courses"
-            ],
-            "summary": "view data user by category id ",
-            "security": [
-                {
-                    "BearerAuth": []
-                }
-            ],
-            "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "categoryId": {
-                                        "type": "uuid"
-                                    }
-                                }
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "View course data successfully"
-                    },
-                    "401": {
-                        "description": "unauthorized from user"
-                    },
-                    "403": {
-                        "description": "forbidden from this resource"
-                    },
-                    "404": {
-                        "description": "some error message"
-                    }
-                    
-                }
-            }
-    },
-    
-    "/modules": {
-        "get": {
-            "tags": [
-                "Modules"
-            ],
-            "summary": "view module list data",
-            "security": [
-                {
-                    "BearerAuth": []
-                }
-            ],
-            "responses": {
-                "200": {
-                    "description": "View all module data successfully"
-                }
-            }
-            },
-        "post": {
-            "tags": [
-                "Modules"
-            ],
-            "summary": "create a new module ",
-            "security": [
-                {
-                    "BearerAuth": []
-                }
-            ],
-            "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "title": {
-                                        "type": "string"
-                                    },
-                                    "video": {
-                                        "type": "string"
-                                    },
-                                    "time": {
-                                        "type": "number"
-                                    },
-                                    "courseId": {
-                                        "type": "string"
-                                    }
-                                }
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "201": {
-                        "description": "create module data has been successfully"
-                    },
-                    "400": {
-                        "description": "invalid data structure from client"
-                    },
-                    "401": {
-                        "description": "unauthorized from user"
-                    },
-                    "403": {
-                        "description": "forbidden from this resource"
-                    },
-                    "404": {
-                        "description": "some error message"
-                    }
-                    
-                }
-            },
-        "put": {
-            "tags": [
-                "Modules"
-            ],
-            "summary": "update course data",
-            "security": [
-                {
-                    "BearerAuth": []
-                }
-            ],
-            "requestBody": {
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "id": {
-                                    "type": "uuid"
-                                },
-                                "title": {
-                                    "type": "string"
-                                },
-                                "video": {
-                                    "type": "string"
-                                },
-                                "time": {
-                                    "type": "number"
-                                },
-                                "courseId": {
-                                    "type": "uuid"
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "responses": {
-                "201": {
-                    "description": "update module data has been successfully"
-                },
-                "400": {
-                    "description": "invalid data structure from client"
-                },
-                "401": {
-                    "description": "unauthorized from user"
-                },
-                "403": {
-                    "description": "forbidden from this resource"
-                },
-                "404": {
-                    "description": "data not found"
-                }
-            }
-        }
-    
-    },
-    "/modules/search" : {
-        "post": {
-            "tags": [
-                "Modules"
-            ],
-            "summary": "view data modules by id ",
-            "security": [
-                {
-                    "BearerAuth": []
-                }
-            ],
-            "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "id": {
-                                        "type": "uuid"
-                                    }
-                                }
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "View all module data successfully"
-                    },
-                    "401": {
-                        "description": "unauthorized from user"
-                    },
-                    "403": {
-                        "description": "forbidden from this resource"
-                    },
-                    "404": {
-                        "description": "some error message"
-                    }
-                    
-                }
-            }
-    },
-
-    "/courseTrackings": {
-        "get": {
-            "tags": [
-                "CourseTrackings"
-            ],
-            "summary": "view course tracking list data",
-            "security": [
-                {
-                    "BearerAuth": []
-                }
-            ],
-            "responses": {
-                "200": {
-                    "description": "View all module data successfully"
-                }
-            }
-            },
-        "post": {
-            "tags": [
-                "CourseTrackings"
-            ],
-            "summary": "add new data course tracking  ",
-            "security": [
-                {
-                    "BearerAuth": []
-                }
-            ],
-            "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "status": {
-                                        "type": "string"
-                                    },
-                                    "userId": {
-                                        "type": "uuid"
-                                    },
-                                    "courseId": {
-                                        "type": "uuid"
-                                    }
-                                }
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "201": {
-                        "description": "create module data has been successfully"
-                    },
-                    "400": {
-                        "description": "invalid data structure from client"
-                    },
-                    "401": {
-                        "description": "unauthorized from user"
-                    },
-                    "403": {
-                        "description": "forbidden from this resource"
-                    },
-                    "404": {
-                        "description": "some error message"
-                    }
-                    
-                }
-            },
-        "put": {
-            "tags": [
-                "CourseTrackings"
-            ],
-            "summary": "update course tracking data",
-            "security": [
-                {
-                    "BearerAuth": []
-                }
-            ],
-            "requestBody": {
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "id": {
-                                    "type": "uuid"
-                                },
-                                "status": {
-                                    "type": "string"
-                                },
-                                "userId": {
-                                    "type": "uuid"
-                                },
-                                "courseId": {
-                                    "type": "uuid"
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "responses": {
-                "201": {
-                    "description": "update module data has been successfully"
-                },
-                "400": {
-                    "description": "invalid data structure from client"
-                },
-                "401": {
-                    "description": "unauthorized from user"
-                },
-                "403": {
-                    "description": "forbidden from this resource"
-                },
-                "404": {
-                    "description": "data not found"
-                }
-            }
-        }
-    },
-    "/courseTrackings/search" : {
-        "post": {
-            "tags": [
-                "CourseTrackings"
-            ],
-            "summary": "view course tracking data by id ",
-            "security": [
-                {
-                    "BearerAuth": []
-                }
-            ],
-            "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "id": {
-                                        "type": "uuid"
-                                    }
-                                }
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "201": {
-                        "description": "view course tracking by id"
-                    },
-                    "401": {
-                        "description": "unauthorized from user"
-                    },
-                    "403": {
-                        "description": "forbidden from this resource"
-                    },
-                    "404": {
-                        "description": "some error message"
-                    }
-                    
-                }
-            }
-    },
-
-    "/moduleTrackings": {
-        "get": {
-            "tags": [
-                "ModuleTrackings"
-            ],
-            "summary": "view course list data",
-            "security": [
-                {
-                    "BearerAuth": []
-                }
-            ],
-            "responses": {
-                "200": {
-                    "description": "View all module tracking data successfully"
-                }
-            }
-            },
-        "post": {
-            "tags": [
-                "ModuleTrackings"
-            ],
-            "summary": "add new data course tracking  ",
-            "security": [
-                {
-                    "BearerAuth": []
-                }
-            ],
-            "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "status": {
-                                        "type": "string"
-                                    },
-                                    "userId": {
-                                        "type": "uuid"
-                                    },
-                                    "courseId": {
-                                        "type": "uuid"
-                                    }
-                                }
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "201": {
-                        "description": "create module tracking data has been successfully"
-                    },
-                    "400": {
-                        "description": "invalid data structure from client"
-                    },
-                    "401": {
-                        "description": "unauthorized from user"
-                    },
-                    "403": {
-                        "description": "forbidden from this resource"
-                    },
-                    "404": {
-                        "description": "some error message"
-                    }
-                    
-                }
-            },
-        "put": {
-            "tags": [
-                "ModuleTrackings"
-            ],
-            "summary": "update course tracking data",
-            "security": [
-                {
-                    "BearerAuth": []
-                }
-            ],
-            "requestBody": {
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "id": {
-                                    "type": "uuid"
-                                },
-                                "status": {
-                                    "type": "string"
-                                },
-                                "userId": {
-                                    "type": "uuid"
-                                },
-                                "courseId": {
-                                    "type": "uuid"
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "responses": {
-                "201": {
-                    "description": "update module tracking data has been successfully"
-                },
-                "400": {
-                    "description": "invalid data structure from client"
-                },
-                "401": {
-                    "description": "unauthorized from user"
-                },
-                "403": {
-                    "description": "forbidden from this resource"
-                },
-                "404": {
-                    "description": "data not found"
-                }
-            }
-        }
-    },
-
-    "/moduleTrackings/search" : {
-        "post": {
-            "tags": [
-                "ModuleTrackings"
-            ],
-            "summary": "view course tracking data by id ",
-            "security": [
-                {
-                    "BearerAuth": []
-                }
-            ],
-            "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "id": {
-                                        "type": "uuid"
-                                    }
-                                }
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "201": {
                         "description": "View all module tracking data successfully"
+                    }
+                }
+                },
+            "post": {
+                "tags": [
+                    "ModuleTrackings"
+                ],
+                "summary": "add new data course tracking  ",
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "requestBody": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": {
+                                            "type": "string"
+                                        },
+                                        "userId": {
+                                            "type": "uuid"
+                                        },
+                                        "courseId": {
+                                            "type": "uuid"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "responses": {
+                        "201": {
+                            "description": "create module tracking data has been successfully"
+                        },
+                        "400": {
+                            "description": "invalid data structure from client"
+                        },
+                        "401": {
+                            "description": "unauthorized from user"
+                        },
+                        "403": {
+                            "description": "forbidden from this resource"
+                        },
+                        "404": {
+                            "description": "some error message"
+                        }
+                        
+                    }
+                },
+            "put": {
+                "tags": [
+                    "ModuleTrackings"
+                ],
+                "summary": "update course tracking data",
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "uuid"
+                                    },
+                                    "status": {
+                                        "type": "string"
+                                    },
+                                    "userId": {
+                                        "type": "uuid"
+                                    },
+                                    "courseId": {
+                                        "type": "uuid"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "update module tracking data has been successfully"
+                    },
+                    "400": {
+                        "description": "invalid data structure from client"
                     },
                     "401": {
                         "description": "unauthorized from user"
@@ -1120,11 +1067,53 @@
                         "description": "forbidden from this resource"
                     },
                     "404": {
-                        "description": "some error message"
+                        "description": "data not found"
                     }
-                    
                 }
             }
+        },
+
+        "/moduleTrackings/search" : {
+            "post": {
+                "tags": [
+                    "ModuleTrackings"
+                ],
+                "summary": "view course tracking data by id ",
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "requestBody": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "uuid"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "responses": {
+                        "201": {
+                            "description": "View all module tracking data successfully"
+                        },
+                        "401": {
+                            "description": "unauthorized from user"
+                        },
+                        "403": {
+                            "description": "forbidden from this resource"
+                        },
+                        "404": {
+                            "description": "some error message"
+                        }
+                        
+                    }
+                }
+        }
     }
-  }
 }
