@@ -550,9 +550,8 @@
     "/auth/register": {
       "post": {
         "tags": ["Authentication"],
-        "summary": "User registration",
+        "summary": "User Registration",
         "requestBody": {
-          "required": true,
           "content": {
             "application/json": {
               "schema": {
@@ -622,7 +621,7 @@
     "/auth/login": {
       "post": {
         "tags": ["Authentication"],
-        "summary": "User login",
+        "summary": "User Login",
         "requestBody": {
           "required": true,
           "content": {
@@ -688,7 +687,7 @@
     "/auth/admin/login": {
       "post": {
         "tags": ["Authentication"],
-        "summary": "User login",
+        "summary": "Admin Login",
         "requestBody": {
           "required": true,
           "content": {
@@ -764,7 +763,7 @@
     "/auth/current-user": {
       "get": {
         "tags": ["Authentication"],
-        "summary": "Get current user details",
+        "summary": "Get Current User Details",
         "security": [
           {
             "BearerAuth": []
@@ -807,7 +806,7 @@
     "/auth/logout": {
       "get": {
         "tags": ["Authentication"],
-        "summary": "Get current user details",
+        "summary": "User Logout",
         "responses": {
           "200": {
             "description": "",
@@ -827,7 +826,7 @@
     "/auth/reset-password": {
       "put": {
         "tags": ["Authentication"],
-        "summary": "Get current user details",
+        "summary": "Send Link Reset Password",
         "requestBody": {
           "content": {
             "application/json": {
@@ -885,7 +884,7 @@
     "/auth/reset-password/{resetToken}": {
       "put": {
         "tags": ["Authentication"],
-        "summary": "Get current user details",
+        "summary": "Reset Password",
         "parameters": [
           {
             "name": "resetToken",
@@ -956,7 +955,7 @@
     "/users": {
       "get": {
         "tags": ["Users"],
-        "summary": "",
+        "summary": "Get Total Users",
         "responses": {
           "200": {
             "description": "",
@@ -1007,7 +1006,7 @@
       },
       "put": {
         "tags": ["Users"],
-        "summary": "",
+        "summary": "Update User Data",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1115,7 +1114,7 @@
     "/users/change-password": {
       "put": {
         "tags": ["Users"],
-        "summary": "",
+        "summary": "Change User Password",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1188,7 +1187,7 @@
     "/categories": {
       "get": {
         "tags": ["Categories"],
-        "summary": "Get list of categories",
+        "summary": "Get List of Categories",
         "responses": {
           "200": {
             "description": "",
@@ -1206,7 +1205,7 @@
     "/notification": {
       "post": {
         "tags": ["Notification"],
-        "summary": "",
+        "summary": "Create Notification to Current User",
         "security": [
           {
             "BearerAuth": []
@@ -1275,7 +1274,7 @@
     "/notification/user": {
       "get": {
         "tags": ["Notification"],
-        "summary": "",
+        "summary": "Get All Current User Notifications",
         "security": [
           {
             "BearerAuth": []
@@ -1318,7 +1317,12 @@
     "/orders": {
       "get": {
         "tags": ["Orders"],
-        "summary": "",
+        "summary": "Get All Orders",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -1367,7 +1371,12 @@
       },
       "post": {
         "tags": ["Orders"],
-        "summary": "",
+        "summary": "Create Orders to Current User",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -1439,7 +1448,7 @@
     "/orders/user": {
       "get": {
         "tags": ["Orders"],
-        "summary": "",
+        "summary": "Get All Current User Orders",
         "security": [
           {
             "BearerAuth": []
@@ -1482,7 +1491,12 @@
     "/orders/filter": {
       "post": {
         "tags": ["Orders"],
-        "summary": "",
+        "summary": "Get All Orders based on Filter",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -1559,7 +1573,28 @@
     "/orders/approve": {
       "put": {
         "tags": ["Orders"],
-        "summary": "",
+        "summary": "Approve Order",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "orderId": {
+                    "type": "string",
+                    "format": "uuid",
+                    "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+                  }
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "",
