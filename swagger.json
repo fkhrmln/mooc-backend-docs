@@ -448,7 +448,7 @@
             },
             "message": {
               "type": "string",
-              "example": "Invalid Token"
+              "example": "Access Token is Required"
             },
             "data": {
               "example": null
@@ -465,7 +465,7 @@
             },
             "message": {
               "type": "string",
-              "example": "Access Token is Required"
+              "example": "Invalid Token"
             },
             "data": {
               "example": null
@@ -528,10 +528,6 @@
     {
         "name": "Categories",
         "description": "Endpoints for category management"
-    },
-    {
-      "name": "Payments",
-      "description": "Endpoints for payment management"
     },
     {
         "name": "Orders",
@@ -829,7 +825,7 @@
       }
     },
     "/auth/reset-password": {
-      "post": {
+      "put": {
         "tags": ["Authentication"],
         "summary": "Get current user details",
         "requestBody": {
@@ -960,17 +956,233 @@
     "/users": {
       "get": {
         "tags": ["Users"],
-        "summary": "Get list of users",
+        "summary": "",
         "responses": {
           "200": {
-            "description": "List of users"
+            "description": "",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "OK",
+                  "message": null,
+                  "data": 10
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccessTokenIsRequiredError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Invalid Token": {
+                    "value": {
+                      "status": "FAIL",
+                      "message": "Invalid Token",
+                      "data": null
+                    }
+                  },
+                  "Only Admin can access this resource": {
+                    "value": {
+                      "status": "FAIL",
+                      "message": "Only Admin can access this resource",
+                      "data": null
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["Users"],
+        "summary": "",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "Windah Basudara"
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "example@gmail.com"
+                  },
+                  "phone": {
+                    "type": "string",
+                    "example": "08123456789"
+                  },
+                  "country": {
+                    "type": "string",
+                    "example": "Indonesia"
+                  },
+                  "city": {
+                    "type": "string",
+                    "example": "Bekasi"
+                  }
+                },
+                "required": ["name", "email", "phone"]
+              }
+            }
           }
         },
-        "security": [
-          {
-            "BearerAuth": []
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "OK",
+                  "message": "Profile Updated Successfully",
+                  "data": {
+                    "accessToken": "JWT"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "FAIL",
+                  "message": "name can't be empty"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccessTokenIsRequiredError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvalidTokenError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Email Already Used": {
+                    "value": {
+                      "status": "FAIL",
+                      "message": "Email Already Used",
+                      "data": null
+                    }
+                  },
+                  "Phone Already Used": {
+                    "value": {
+                      "status": "FAIL",
+                      "message": "Phone Already Used",
+                      "data": null
+                    }
+                  }
+                }
+              }
+            }
           }
-        ]
+        }
+      }
+    },
+    "/users/change-password": {
+      "put": {
+        "tags": ["Users"],
+        "summary": "",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "password": {
+                    "type": "string",
+                    "example": "password123"
+                  },
+                  "newPassword": {
+                    "type": "string",
+                    "example": "password12345"
+                  }
+                },
+                "required": ["password", "newPassword"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "OK",
+                  "message": "Change Password Successfully",
+                  "data": null
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Access Token is Required": {
+                    "value": {
+                      "status": "FAIL",
+                      "message": "Access Token is Required",
+                      "data": null
+                    }
+                  },
+                  "Wrong Password": {
+                    "value": {
+                      "status": "FAIL",
+                      "message": "Wrong Password",
+                      "data": null
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvalidTokenError"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/categories": {
@@ -1224,7 +1436,179 @@
         }
       }
     },
-
+    "/orders/user": {
+      "get": {
+        "tags": ["Orders"],
+        "summary": "",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Orders"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccessTokenIsRequiredError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvalidTokenError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/orders/filter": {
+      "post": {
+        "tags": ["Orders"],
+        "summary": "",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "categoryId": {
+                    "type": "string",
+                    "format": "uuid",
+                    "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+                  },
+                  "status": {
+                    "type": "string",
+                    "enum": ["WAITING", "APPROVED"],
+                    "example": "WAITING"
+                  },
+                  "date": {
+                    "type": "string",
+                    "enum": ["asc", "desc"],
+                    "example": "asc"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Orders"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccessTokenIsRequiredError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Invalid Token": {
+                    "value": {
+                      "status": "FAIL",
+                      "message": "Invalid Token",
+                      "data": null
+                    }
+                  },
+                  "Only Admin can access this resource": {
+                    "value": {
+                      "status": "FAIL",
+                      "message": "Only Admin can access this resource",
+                      "data": null
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/orders/approve": {
+      "put": {
+        "tags": ["Orders"],
+        "summary": "",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "OK",
+                  "message": "Order Approved Successfully",
+                  "data": null
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccessTokenIsRequiredError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Invalid Token": {
+                    "value": {
+                      "status": "FAIL",
+                      "message": "Invalid Token",
+                      "data": null
+                    }
+                  },
+                  "Only Admin can access this resource": {
+                    "value": {
+                      "status": "FAIL",
+                      "message": "Only Admin can access this resource",
+                      "data": null
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/courses": {
             "get": {
                 "tags": [
