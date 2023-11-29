@@ -16,110 +16,497 @@
         }
     ],
     "components": {
-    "securitySchemes": {
-        "BearerAuth": {
-        "type": "http",
-        "scheme": "bearer",
-        "bearerFormat": "JWT"
-        }
-    },
-    "schemas": {
-      "User": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "uuid",
-            "example": "550e8400-e29b-41d4-a716-446655440000"
-          },
-          "name": {
-            "type": "string",
-            "example": "Uzumaki Naruto"
-          },
-          "handphone": {
-            "type": "string",
-            "example": "091334567890"
-          },
-          "address": {
-            "type": "string",
-            "example": "JAPAN"
-          },
-          "email": {
-            "type": "string",
-            "example": "naruto@gmail.com"
-          },
-          "password": {
-            "type": "string",
-            "example": "$2b$10$e8dC5u/mxy5HExlcv5.RpOFUlbDwWy0GFgdvYKzzDH5PYzmu9xG2u"
-          },
-          "role": {
-            "type": "string",
-            "enum": [
-              "ADMIN",
-              "SUPERADMIN",
-              "MEMBER"
-            ],
-            "example": "MEMBER"
-          },
-          "createdAt": {
-            "type": "date-time",
-            "example": "2023-10-20 20:30:13.053+07"
-          },
-          "updatedAt": {
-            "type": "date-time",
-            "example": "2023-10-20 20:30:13.053+07"
+      "securitySchemes": {
+          "BearerAuth": {
+          "type": "http",
+          "scheme": "bearer",
+          "bearerFormat": "JWT"
+          }
+      },
+      "schemas": {
+        "Payment": {
+          "type": "object",
+          "properties": {
+            "cardNumber": {
+              "type": "string",
+              "example": "0123456789"
+            },
+            "cardName": {
+              "type": "string",
+              "example": "Windah Basudara"
+            },
+            "cvv": {
+              "type": "integer",
+              "example": 1234
+            },
+            "expiryDate": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "amount": {
+              "type": "number",
+              "example": 0
+            }
+          }
+        },
+        "Notifications": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "type": "string",
+              "enum": ["OK", "FAIL"],
+              "example": "OK"
+            },
+            "message": {
+              "type": "string",
+              "example": null
+            },
+            "data": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "format": "uuid",
+                    "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+                  },
+                  "title": {
+                    "type": "string",
+                    "example": "Discount"
+                  },
+                  "subtitle": {
+                    "type": "string",
+                    "example": "50% All Course"
+                  },
+                  "description": {
+                    "type": "string",
+                    "example": "Terms and Conditions Apply"
+                  },
+                  "createdAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "example": "2023-01-01T00:00:00.000Z"
+                  },
+                  "updatedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "example": "2023-01-01T00:00:00.000Z"
+                  },
+                  "userId": {
+                    "type": "string",
+                    "format": "uuid",
+                    "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "Categories": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "type": "string",
+              "enum": ["OK", "FAIL"],
+              "example": "OK"
+            },
+            "message": {
+              "type": "string",
+              "example": null
+            },
+            "data": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "format": "uuid",
+                    "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+                  },
+                  "title": {
+                    "type": "string",
+                    "example": "Web Development"
+                  },
+                  "image": {
+                    "type": "string",
+                    "example": "https://example.com/image.png"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "User": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "type": "string",
+              "enum": ["OK", "FAIL"],
+              "example": "OK"
+            },
+            "message": {
+              "type": "string",
+              "example": null
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "format": "uuid",
+                  "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+                },
+                "name": {
+                  "type": "string",
+                  "example": "Windah Basudara"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "example@gmail.com"
+                },
+                "phone": {
+                  "type": "string",
+                  "example": "08123456789"
+                },
+                "image": {
+                  "type": "string",
+                  "example": "https://example.com/image.png"
+                },
+                "country": {
+                  "type": "string",
+                  "example": "Indonesia"
+                },
+                "city": {
+                  "type": "string",
+                  "example": "Bekasi"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "password123"
+                },
+                "role": {
+                  "type": "string",
+                  "enum": ["USER", "ADMIN"],
+                  "example": "USER"
+                },
+                "createdAt": {
+                  "type": "string",
+                  "format": "date-time",
+                  "example": "2023-01-01T00:00:00.000Z"
+                },
+                "updatedAt": {
+                  "type": "string",
+                  "format": "date-time",
+                  "example": "2023-01-01T00:00:00.000Z"
+                }
+              }
+            }
+          }
+        },
+        "Orders": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "type": "string",
+              "enum": ["OK", "FAIL"],
+              "example": "OK"
+            },
+            "message": {
+              "type": "string",
+              "example": null
+            },
+            "data": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "format": "uuid",
+                    "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+                  },
+                  "status": {
+                    "type": "string",
+                    "enum": ["APPROVED", "WAITING"],
+                    "example": "WAITING"
+                  },
+                  "createdAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "example": "2023-01-01T00:00:00.000Z"
+                  },
+                  "updatedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "example": "2023-01-01T00:00:00.000Z"
+                  },
+                  "userId": {
+                    "type": "string",
+                    "format": "uuid",
+                    "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+                  },
+                  "courseId": {
+                    "type": "string",
+                    "format": "uuid",
+                    "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+                  },
+                  "paymentId": {
+                    "type": "string",
+                    "format": "uuid",
+                    "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+                  },
+                  "user": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+                      },
+                      "name": {
+                        "type": "string",
+                        "example": "Windah Basudara"
+                      },
+                      "email": {
+                        "type": "string",
+                        "example": "example@gmail.com"
+                      },
+                      "phone": {
+                        "type": "string",
+                        "example": "08123456789"
+                      },
+                      "image": {
+                        "type": "string",
+                        "example": "https://example.com/image.png"
+                      },
+                      "country": {
+                        "type": "string",
+                        "example": "Indonesia"
+                      },
+                      "city": {
+                        "type": "string",
+                        "example": "Bekasi"
+                      },
+                      "role": {
+                        "type": "string",
+                        "enum": ["USER", "ADMIN"],
+                        "example": "USER"
+                      },
+                      "createdAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2023-01-01T00:00:00.000Z"
+                      },
+                      "updatedAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2023-01-01T00:00:00.000Z"
+                      }
+                    }
+                  },
+                  "course": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+                      },
+                      "title": {
+                        "type": "string",
+                        "example": "HTML"
+                      },
+                      "image": {
+                        "type": "string",
+                        "example": "https://example.com/image.png"
+                      },
+                      "subtitle": {
+                        "type": "string",
+                        "example": "English"
+                      },
+                      "description": {
+                        "type": "string",
+                        "example": "This is description"
+                      },
+                      "classCode": {
+                        "type": "string",
+                        "example": "XXX123"
+                      },
+                      "type": {
+                        "type": "string",
+                        "enum": ["FREE", "PREMIUM"],
+                        "example": "PREMIUM"
+                      },
+                      "authorBy": {
+                        "type": "string",
+                        "example": "Windah Basudara"
+                      },
+                      "rating": {
+                        "type": "number",
+                        "example": 0
+                      },
+                      "price": {
+                        "type": "number",
+                        "example": 0
+                      },
+                      "level": {
+                        "type": "string",
+                        "enum": ["BEGINNER", "INTERMEDIATE", "ADVANCED"],
+                        "example": "BEGINNER"
+                      },
+                      "createdAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2023-01-01T00:00:00.000Z"
+                      },
+                      "updatedAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2023-01-01T00:00:00.000Z"
+                      },
+                      "deletedAt": {
+                        "type": "null",
+                        "format": "date-time",
+                        "example": "2023-01-01T00:00:00.000Z"
+                      },
+                      "createdBy": {
+                        "type": "string",
+                        "format": "uuid",
+                        "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+                      },
+                      "updatedBy": {
+                        "type": "string",
+                        "format": "uuid",
+                        "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+                      },
+                      "deletedBy": {
+                        "type": "null",
+                        "format": "uuid",
+                        "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+                      },
+                      "categoryId": {
+                        "type": "string",
+                        "format": "uuid",
+                        "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+                      }
+                    }
+                  },
+                  "payment": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+                      },
+                      "cardNumber": {
+                        "type": "string",
+                        "example": "0123456789"
+                      },
+                      "cardName": {
+                        "type": "string",
+                        "example": "Windah Basudara"
+                      },
+                      "cvv": {
+                        "type": "integer",
+                        "example": 1234
+                      },
+                      "expiryDate": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "amount": {
+                        "type": "number",
+                        "example": 0
+                      },
+                      "createdAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2023-01-01T00:00:00.000Z"
+                      },
+                      "updatedAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2023-01-01T00:00:00.000Z"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "AccessTokenIsRequiredError": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "type": "string",
+              "enum": ["OK", "FAIL"],
+              "example": "FAIL"
+            },
+            "message": {
+              "type": "string",
+              "example": "Invalid Token"
+            },
+            "data": {
+              "example": null
+            }
+          }
+        },
+        "InvalidTokenError": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "type": "string",
+              "enum": ["OK", "FAIL"],
+              "example": "FAIL"
+            },
+            "message": {
+              "type": "string",
+              "example": "Access Token is Required"
+            },
+            "data": {
+              "example": null
+            }
+          }
+        },
+        "OnlyAdminError": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "type": "string",
+              "enum": ["OK", "FAIL"],
+              "example": "FAIL"
+            },
+            "message": {
+              "type": "string",
+              "example": "Only Admin can access this resource"
+            },
+            "data": {
+              "example": null
+            }
+          }
+        },
+        "EmailNotRegisteredError": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "type": "string",
+              "enum": ["OK", "FAIL"],
+              "example": "FAIL"
+            },
+            "message": {
+              "type": "string",
+              "example": "Email not Registered"
+            },
+            "data": {
+              "example": null
+            }
           }
         }
-        },
-        "Course": {
-        "type": "object",
-        "properties": {
-            "id": {
-            "type": "uuid",
-            "example": "550e8400-e29b-41d4-a716-446655440000"
-            },
-            "name": {
-            "type": "string",
-            "example": "Mobil Avanza"
-            },
-            "image": {
-            "type": "string",
-            "example": "https://firebasestorage.googleapis.com/v0/b/binar-course-402108.appspot.com/o/course-seed-1697616543758.jpg?alt=media&token=fbd8f719-7387-4415-b852-9da385cb99ad"
-            },
-            "rentPerDay": {
-            "type": "integer",
-            "example": 100000
-            },
-            "size": {
-            "type": "string",
-            "example": "Large"
-            },
-            "createdAt": {
-            "type": "date-time",
-            "example": "2023-10-20 20:30:13.053+07"
-            },
-            "updatedAt": {
-            "type": "date-time",
-            "example": "2023-10-20 20:30:13.053+07"
-            },
-            "deletedAt": {
-            "type": "date-time",
-            "example": "2023-10-20 20:30:13.053+07"
-            },
-            "createdBy": {
-            "type": "uuid",
-            "example": "550e8400-e29b-41d4-a716-446655440000"
-            },
-            "updatedBy": {
-            "type": "uuid",
-            "example": "550e8400-e29b-41d4-a716-446655440000"
-            },
-            "deletedBy": {
-            "type": "uuid",
-            "example": "550e8400-e29b-41d4-a716-446655440000"
-            }
-        }
-        }
-    }
+      }
     },
     "tags": [
     {
@@ -176,19 +563,19 @@
                 "type": "object",
                 "properties": {
                   "name": {
-                    "default": "string",
+                    "default": "Windah Basudara",
                     "type": "string"
                   },
                   "email": {
-                    "default": "string",
+                    "default": "example@gmail.com",
                     "type": "string"
                   },
                   "phone": {
-                    "default": "string",
+                    "default": "08123456789",
                     "type": "string"
                   },
                   "password": {
-                    "default": "string",
+                    "default": "password123",
                     "type": "string"
                   }
                 },
@@ -248,11 +635,11 @@
                 "type": "object",
                 "properties": {
                   "emailOrPhone": {
-                    "default": "string",
+                    "default": "example@gmail.com",
                     "type": "string"
                   },
                   "password": {
-                    "default": "string",
+                    "default": "password123",
                     "type": "string"
                   }
                 },
@@ -302,20 +689,272 @@
         }
       }
     },
+    "/auth/admin/login": {
+      "post": {
+        "tags": ["Authentication"],
+        "summary": "User login",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "emailOrPhone": {
+                    "default": "example@gmail.com",
+                    "type": "string"
+                  },
+                  "password": {
+                    "default": "password123",
+                    "type": "string"
+                  }
+                },
+                "required": ["emailOrPhone", "password"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "OK",
+                  "message": "Login Successfully",
+                  "data": {
+                    "accessToken": "JWT"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Email or Phone not Registered": {
+                    "value": {
+                      "status": "FAIL",
+                      "message": "Email or Phone not Registered",
+                      "data": null
+                    }
+                  },
+                  "Wrong Password": {
+                    "value": {
+                      "status": "FAIL",
+                      "message": "Wrong Password",
+                      "data": null
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OnlyAdminError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/auth/current-user": {
+      "get": {
+        "tags": ["Authentication"],
+        "summary": "Get current user details",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccessTokenIsRequiredError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvalidTokenError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/logout": {
       "get": {
         "tags": ["Authentication"],
         "summary": "Get current user details",
         "responses": {
           "200": {
-            "description": "Current user details"
+            "description": "",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "OK",
+                  "message": "Logout",
+                  "data": null
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/reset-password": {
+      "post": {
+        "tags": ["Authentication"],
+        "summary": "Get current user details",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "default": "example@gmail.com",
+                    "type": "string"
+                  }
+                },
+                "required": ["email"]
+              }
+            }
           }
         },
-        "security": [
-          {
-            "BearerAuth": []
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "OK",
+                  "message": "Reset Password Link has been sent to example@gmail.com",
+                  "data": null
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmailNotRegisteredError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "FAIL",
+                  "message": "Reset Password Link has been sent",
+                  "data": null
+                }
+              }
+            }
           }
-        ]
+        }
+      }
+    },
+    "/auth/reset-password/{resetToken}": {
+      "put": {
+        "tags": ["Authentication"],
+        "summary": "Get current user details",
+        "parameters": [
+          {
+            "name": "resetToken",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "password": {
+                    "default": "password123",
+                    "type": "string"
+                  }
+                },
+                "required": ["password"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "OK",
+                  "message": "Reset Password Successfully",
+                  "data": null
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Invalid Reset Token": {
+                    "value": {
+                      "status": "FAIL",
+                      "message": "Invalid Reset Token",
+                      "data": null
+                    }
+                  },
+                  "Reset Token Expired": {
+                    "value": {
+                      "status": "FAIL",
+                      "message": "Reset Token Expired",
+                      "data": null
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/users": {
@@ -340,18 +979,126 @@
         "summary": "Get list of categories",
         "responses": {
           "200": {
-            "description": "List of categories"
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Categories"
+                }
+              }
+            }
           }
         }
       }
     },
-    "/payments": {
+    "/notification": {
+      "post": {
+        "tags": ["Notification"],
+        "summary": "",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "example": "Discount"
+                  },
+                  "subtitle": {
+                    "type": "string",
+                    "example": "50% All Course"
+                  },
+                  "description": {
+                    "type": "string",
+                    "example": "Terms and Conditions Apply"
+                  }
+                },
+                "required": ["title", "subtitle"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "OK",
+                  "message": "Notification Created Successfully",
+                  "data": null
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccessTokenIsRequiredError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvalidTokenError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/notification/user": {
       "get": {
-        "tags": ["Payments"],
-        "summary": "Get list of payments",
+        "tags": ["Notification"],
+        "summary": "",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
         "responses": {
           "200": {
-            "description": "List of payments"
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Notifications"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccessTokenIsRequiredError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvalidTokenError"
+                }
+              }
+            }
           }
         }
       }
@@ -359,14 +1106,125 @@
     "/orders": {
       "get": {
         "tags": ["Orders"],
-        "summary": "Get list of orders",
+        "summary": "",
         "responses": {
           "200": {
-            "description": "List of orders"
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Orders"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccessTokenIsRequiredError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Invalid Token": {
+                    "value": {
+                      "status": "FAIL",
+                      "message": "Invalid Token",
+                      "data": null
+                    }
+                  },
+                  "Only Admin can access this resource": {
+                    "value": {
+                      "status": "FAIL",
+                      "message": "Only Admin can access this resource",
+                      "data": null
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Orders"],
+        "summary": "",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "courseId": {
+                    "type": "string",
+                    "format": "uuid",
+                    "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+                  },
+                  "payment": {
+                    "$ref": "#/components/schemas/Payment"
+                  }
+                },
+                "required": ["courseId", "payment"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "OK",
+                  "message": "Order Created Successfully",
+                  "data": null
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccessTokenIsRequiredError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvalidTokenError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "FAIL",
+                  "message": "Order has already been placed",
+                  "data": null
+                }
+              }
+            }
           }
         }
       }
     },
+
     "/courses": {
             "get": {
                 "tags": [
