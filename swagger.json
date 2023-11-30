@@ -438,6 +438,196 @@
             }
           }
         },
+        "Course": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "format": "uuid",
+              "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+            },
+            "title": {
+              "type": "string",
+              "example": "HTML"
+            },
+            "image": {
+              "type": "string",
+              "example": "https://example.com/image.png"
+            },
+            "subtitle": {
+              "type": "string",
+              "example": "English"
+            },
+            "description": {
+              "type": "string",
+              "example": "This is description"
+            },
+            "classCode": {
+              "type": "string",
+              "example": "XXX123"
+            },
+            "type": {
+              "type": "string",
+              "enum": ["FREE", "PREMIUM"],
+              "example": "PREMIUM"
+            },
+            "authorBy": {
+              "type": "string",
+              "example": "Windah Basudara"
+            },
+            "rating": {
+              "type": "number",
+              "example": 0
+            },
+            "price": {
+              "type": "number",
+              "example": 0
+            },
+            "level": {
+              "type": "string",
+              "enum": ["BEGINNER", "INTERMEDIATE", "ADVANCED"],
+              "example": "BEGINNER"
+            },
+            "createdAt": {
+              "type": "string",
+              "format": "date-time",
+              "example": "2023-01-01T00:00:00.000Z"
+            },
+            "updatedAt": {
+              "type": "string",
+              "format": "date-time",
+              "example": "2023-01-01T00:00:00.000Z"
+            },
+            "deletedAt": {
+              "type": "null",
+              "format": "date-time",
+              "example": "2023-01-01T00:00:00.000Z"
+            },
+            "createdBy": {
+              "type": "string",
+              "format": "uuid",
+              "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+            },
+            "updatedBy": {
+              "type": "string",
+              "format": "uuid",
+              "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+            },
+            "deletedBy": {
+              "type": "null",
+              "format": "uuid",
+              "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+            },
+            "categoryId": {
+              "type": "string",
+              "format": "uuid",
+              "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+            }
+          }
+        },
+        "CourseTracking": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "format": "uuid",
+              "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+            },
+            "status": {
+              "type": "string",
+              "enum": ["PROGRESS", "DONE"],
+              "example": "DONE"
+            },
+            "userId": {
+              "type": "string",
+              "format": "uuid",
+              "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+            },
+            "courseId": {
+              "type": "string",
+              "format": "uuid",
+              "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+            },
+            "createdAt": {
+              "type": "string",
+              "format": "date-time",
+              "example": "2023-01-01T00:00:00.000Z"
+            },
+            "updatedAt": {
+              "type": "string",
+              "format": "date-time",
+              "example": "2023-01-01T00:00:00.000Z"
+            }
+          }
+        },
+        "Module": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "format": "uuid",
+              "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+            },
+            "title": {
+              "type": "string",
+              "example": "HTML"
+            },
+            "video": {
+              "type": "string",
+              "example": "https://example.com/video.com"
+            },
+            "createdAt": {
+              "type": "string",
+              "format": "date-time",
+              "example": "2023-01-01T00:00:00.000Z"
+            },
+            "updatedAt": {
+              "type": "string",
+              "format": "date-time",
+              "example": "2023-01-01T00:00:00.000Z"
+            },
+            "courseId": {
+              "type": "string",
+              "format": "uuid",
+              "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+            }
+          }
+        },
+        "ModuleTracking": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "format": "uuid",
+              "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+            },
+            "status": {
+              "type": "string",
+              "enum": ["PROGRESS", "DONE"],
+              "example": "DONE"
+            },
+            "userId": {
+              "type": "string",
+              "format": "uuid",
+              "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+            },
+            "moduleId": {
+              "type": "string",
+              "format": "uuid",
+              "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+            },
+            "createdAt": {
+              "type": "string",
+              "format": "date-time",
+              "example": "2023-01-01T00:00:00.000Z"
+            },
+            "updatedAt": {
+              "type": "string",
+              "format": "date-time",
+              "example": "2023-01-01T00:00:00.000Z"
+            }
+          }
+        },
         "AccessTokenIsRequiredError": {
           "type": "object",
           "properties": {
