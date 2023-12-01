@@ -885,7 +885,7 @@
       }
     },
     "/auth/register/resend-otp": {
-      "post": {
+      "put": {
         "tags": ["Authentication"],
         "summary": "User OTP Validation",
         "requestBody": {
