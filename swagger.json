@@ -748,20 +748,20 @@
                 "type": "object",
                 "properties": {
                   "name": {
-                    "default": "Windah Basudara",
-                    "type": "string"
+                    "type": "string",
+                    "example": "Windah Basudara"
                   },
                   "email": {
-                    "default": "example@gmail.com",
-                    "type": "string"
+                    "type": "string",
+                    "example": "example@gmail.com"
                   },
                   "phone": {
-                    "default": "08123456789",
-                    "type": "string"
+                    "type": "string",
+                    "example": "08123456789"
                   },
                   "password": {
-                    "default": "password123",
-                    "type": "string"
+                    "type": "string",
+                    "example": "password123"
                   }
                 },
                 "required": ["name", "email", "phone", "password"]
@@ -770,13 +770,13 @@
           }
         },
         "responses": {
-          "201": {
+          "200": {
             "description": "",
             "content": {
               "application/json": {
                 "example": {
                   "status": "OK",
-                  "message": "Register Successfully",
+                  "message": "OTP Number has been sent to example@gmail.com",
                   "data": null
                 }
               }
@@ -808,6 +808,118 @@
         }
       }
     },
+    "/auth/register/otp": {
+      "post": {
+        "tags": ["Authentication"],
+        "summary": "User OTP Validation",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "Windah Basudara"
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "example@gmail.com"
+                  },
+                  "phone": {
+                    "type": "string",
+                    "example": "08123456789"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": "password123"
+                  },
+                  "otp": {
+                    "type": "string",
+                    "example": "123456"
+                  }
+                },
+                "required": ["name", "email", "phone", "password", "otp"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "OK",
+                  "message": "Register Successfully",
+                  "data": null
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "FAIL",
+                  "message": "Invalid OTP",
+                  "data": null
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "FAIL",
+                  "message": "OTP Expired",
+                  "data": null
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/register/resend-otp": {
+      "post": {
+        "tags": ["Authentication"],
+        "summary": "User OTP Validation",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "example": "example@gmail.com"
+                  }
+                },
+                "required": ["email"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "OK",
+                  "message": "OTP Number has been sent to example@gmail.com",
+                  "data": null
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/auth/login": {
       "post": {
         "tags": ["Authentication"],
@@ -820,12 +932,12 @@
                 "type": "object",
                 "properties": {
                   "emailOrPhone": {
-                    "default": "example@gmail.com",
-                    "type": "string"
+                    "type": "string",
+                    "example": "example@gmail.com"
                   },
                   "password": {
-                    "default": "password123",
-                    "type": "string"
+                    "type": "string",
+                    "example": "password123"
                   }
                 },
                 "required": ["emailOrPhone", "password"]
@@ -886,12 +998,12 @@
                 "type": "object",
                 "properties": {
                   "emailOrPhone": {
-                    "default": "example@gmail.com",
-                    "type": "string"
+                    "type": "string",
+                    "example": "example@gmail.com"
                   },
                   "password": {
-                    "default": "password123",
-                    "type": "string"
+                    "type": "string",
+                    "example": "password123"
                   }
                 },
                 "required": ["emailOrPhone", "password"]
@@ -1024,8 +1136,8 @@
                 "type": "object",
                 "properties": {
                   "email": {
-                    "default": "example@gmail.com",
-                    "type": "string"
+                    "type": "string",
+                    "example": "example@gmail.com"
                   }
                 },
                 "required": ["email"]
@@ -1094,8 +1206,8 @@
                 "type": "object",
                 "properties": {
                   "password": {
-                    "default": "password123",
-                    "type": "string"
+                    "type": "string",
+                    "example": "password123"
                   }
                 },
                 "required": ["password"]
@@ -1116,25 +1228,26 @@
               }
             }
           },
-          "401": {
+          "403": {
             "description": "",
             "content": {
               "application/json": {
-                "examples": {
-                  "Invalid Reset Token": {
-                    "value": {
-                      "status": "FAIL",
-                      "message": "Invalid Reset Token",
-                      "data": null
-                    }
-                  },
-                  "Reset Token Expired": {
-                    "value": {
-                      "status": "FAIL",
-                      "message": "Reset Token Expired",
-                      "data": null
-                    }
-                  }
+                "example": {
+                  "status": "FAIL",
+                  "message": "Invalid Reset Token",
+                  "data": null
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "FAIL",
+                  "message": "Reset Token Expired",
+                  "data": null
                 }
               }
             }
