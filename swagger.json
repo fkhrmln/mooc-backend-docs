@@ -1572,6 +1572,65 @@
             }
           }
         }
+      },
+      "put": {
+        "tags": ["Notification"],
+        "summary": "Update Current User Notifiaction Viewed",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "notificationId": {
+                    "type": "string",
+                    "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+                  }
+                },
+                "required": ["notificationId"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "OK",
+                  "message": "Notification Viewed Updated Successfully",
+                  "data": null
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccessTokenIsRequiredError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvalidTokenError"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/notification/user": {
@@ -1590,6 +1649,49 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Notifications"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccessTokenIsRequiredError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvalidTokenError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["Notification"],
+        "summary": "Update All Current User Notifiaction Viewed",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "OK",
+                  "message": "All Notification Viewed Updated Successfully",
+                  "data": null
                 }
               }
             }
