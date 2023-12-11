@@ -488,6 +488,10 @@
               "enum": ["BEGINNER", "INTERMEDIATE", "ADVANCED"],
               "example": "BEGINNER"
             },
+            "telegram": {
+              "type": "string",
+              "example": "www.tele.com"
+            },
             "createdAt": {
               "type": "string",
               "format": "date-time",
@@ -2104,6 +2108,9 @@
                                             "type": "number"
                                         },
                                         "level" : {
+                                            "type": "string"
+                                        },
+                                        "telegram" : {
                                             "type": "string"
                                         }
                                     }
