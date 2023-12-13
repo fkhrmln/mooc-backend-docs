@@ -2661,6 +2661,24 @@
                 }
             }
         },
+        "/courseTrackings/user": {
+          "get": {
+              "tags": [
+                  "CourseTrackings"
+              ],
+              "summary": "view course tracking list data by user ",
+              "security": [
+                  {
+                      "BearerAuth": []
+                  }
+              ],
+              "responses": {
+                  "200": {
+                      "description": "View all module data successfully"
+                  }
+              }
+              }
+            },
         "/courseTrackings/search" : {
             "post": {
                 "tags": [
@@ -2751,7 +2769,7 @@
                 "tags": [
                     "ModuleTrackings"
                 ],
-                "summary": "view course list data",
+                "summary": "view module list data",
                 "security": [
                     {
                         "BearerAuth": []
@@ -2767,7 +2785,7 @@
                 "tags": [
                     "ModuleTrackings"
                 ],
-                "summary": "add new data course tracking  ",
+                "summary": "add new data module tracking  ",
                 "security": [
                     {
                         "BearerAuth": []
@@ -2864,13 +2882,30 @@
                 }
             }
         },
-
+        "/moduleTrackings/user": {
+          "get": {
+              "tags": [
+                  "ModuleTrackings"
+              ],
+              "summary": "view module list data ",
+              "security": [
+                  {
+                      "BearerAuth": []
+                  }
+              ],
+              "responses": {
+                  "200": {
+                      "description": "View all module tracking data successfully"
+                  }
+              }
+            }
+        },
         "/moduleTrackings/search" : {
             "post": {
                 "tags": [
                     "ModuleTrackings"
                 ],
-                "summary": "view course tracking data by id ",
+                "summary": "view module tracking data by id ",
                 "security": [
                     {
                         "BearerAuth": []
@@ -2912,7 +2947,7 @@
                 "tags": [
                     "ModuleTrackings"
                 ],
-                "summary": "view course tracking data by user and course id ",
+                "summary": "view module tracking data by user and course id ",
                 "security": [
                     {
                         "BearerAuth": []
