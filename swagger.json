@@ -594,6 +594,10 @@
               "type": "string",
               "format": "uuid",
               "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+            },
+            "chapter": {
+              "type": "integer",
+              "example": 1
             }
           }
         },
@@ -2699,6 +2703,48 @@
                     }
                 }
         },
+        "/courseTrackings/userTrack" : {
+            "post": {
+                "tags": [
+                    "CourseTrackings"
+                ],
+                "summary": "view course tracking data by user and course id ",
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "requestBody": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "courseId": {
+                                            "type": "uuid"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "responses": {
+                        "201": {
+                            "description": "view course tracking by user and course id"
+                        },
+                        "401": {
+                            "description": "unauthorized from user"
+                        },
+                        "403": {
+                            "description": "forbidden from this resource"
+                        },
+                        "404": {
+                            "description": "some error message"
+                        }
+                        
+                    }
+                }
+        },
 
         "/moduleTrackings": {
             "get": {
@@ -2837,6 +2883,48 @@
                                     "type": "object",
                                     "properties": {
                                         "id": {
+                                            "type": "uuid"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "responses": {
+                        "201": {
+                            "description": "View all module tracking data successfully"
+                        },
+                        "401": {
+                            "description": "unauthorized from user"
+                        },
+                        "403": {
+                            "description": "forbidden from this resource"
+                        },
+                        "404": {
+                            "description": "some error message"
+                        }
+                        
+                    }
+                }
+        },
+        "/moduleTrackings/userTrack" : {
+            "post": {
+                "tags": [
+                    "ModuleTrackings"
+                ],
+                "summary": "view course tracking data by user and course id ",
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "requestBody": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "courseId": {
                                             "type": "uuid"
                                         }
                                     }
